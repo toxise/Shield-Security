@@ -3,9 +3,6 @@ package com.vintech.util.layer;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  * Created by vincent on 2016/10/6.
  */
@@ -14,7 +11,6 @@ public class LayerManager {
 
     private ILayerBuilder mBuilder;
     private ViewGroup mParent;
-    private Map<Integer, DrawerLayer> mLayer = new HashMap<Integer, DrawerLayer>();
 
     public LayerManager(ILayerBuilder builder, ViewGroup parent) {
         mBuilder = builder;
@@ -22,7 +18,7 @@ public class LayerManager {
     }
 
     public void show(int layerId, LayerBundle bundle) {
-        DrawerLayer layer = mLayer.get(layerId);
+        DrawerLayer layer = (DrawerLayer) mParent.findViewById(layerId);
         boolean show = false;
         if (layer != null) {
             if (layer.getParent() == null) {
@@ -47,7 +43,7 @@ public class LayerManager {
     }
 
     public void hide(int layerId, LayerBundle bundle) {
-        final DrawerLayer layer = mLayer.get(layerId);
+        final DrawerLayer layer = (DrawerLayer) mParent.findViewById(layerId);
         if (layer == null) {
             return;
         }
@@ -59,7 +55,7 @@ public class LayerManager {
     }
 
     public void remove(int layerId, LayerBundle bundle) {
-        final DrawerLayer layer = mLayer.get(layerId);
+        final DrawerLayer layer = (DrawerLayer) mParent.findViewById(layerId);
         layer.setVisibility(View.GONE);
         mParent.post(new Runnable() {
             @Override
@@ -67,5 +63,19 @@ public class LayerManager {
                 mParent.removeView(layer);
             }
         });
+    }
+
+    public boolean handleBackKey() {
+        for (int i = mParent.getChildCount() - 1; i >= 0; i--) {
+            View childAt = mParent.getChildAt(i);
+            if (childAt instanceof DrawerLayer) {
+                boolean handled = ((DrawerLayer) childAt).onBackKey();
+                if (handled) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 }

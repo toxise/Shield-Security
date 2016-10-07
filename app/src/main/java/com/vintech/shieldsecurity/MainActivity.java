@@ -24,4 +24,12 @@ public class MainActivity extends BaseActivity {
         sLayerManager = new LayerManager(LayerBuilder.getInstance(), mMainView);
         sLayerManager.show(R.id.layer_main, null);
     }
+
+    @Override
+    public void onBackPressed() {
+        boolean handled = sLayerManager.handleBackKey();
+        if (!handled) {
+            super.onBackPressed();
+        }
+    }
 }

@@ -2,4 +2,12 @@
 <resources>
     <color name="color_normal">#17204d</color>
     <color name="dock_bar_bg">#69000000</color>
+
+    <!-- 扫描中心的圆圈的环的颜色列表 -->
+    <color name="scan_ring_1">#bc002c</color>
+    <color name="scan_ring_2">#009efa</color>
+    <color name="scan_ring_3">#8b00b1</color>
+    <color name="scan_ring_4">#06ae00</color>
+    <color name="scan_ring_5">#b9b600</color>
+    <color name="scan_bg">#6b131313</color>
 </resources>

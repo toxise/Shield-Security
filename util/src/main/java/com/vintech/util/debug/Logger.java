@@ -1,6 +1,5 @@
 package com.vintech.util.debug;
 
-import android.support.v7.appcompat.BuildConfig;
 import android.util.Log;
 
 /**
@@ -9,7 +8,7 @@ import android.util.Log;
 
 public class Logger {
 
-    public static final boolean DEBUG = BuildConfig.DEBUG;
+    public static final boolean DEBUG = true;
 
     public static final void pgw(Object object) {
         if (!DEBUG) {

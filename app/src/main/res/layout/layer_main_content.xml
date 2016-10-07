@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.vintech.shieldsecurity.main.view.MainButton
+    <com.vintech.shieldsecurity.main.view.MainWorkspace
         android:id="@+id/main_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -28,7 +28,31 @@
             android:textColor="@android:color/white"
             android:textSize="14sp" />
 
-    </com.vintech.shieldsecurity.main.view.MainButton>
+
+        <TextView
+            android:id="@+id/scan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:fontFamily="sans-serif-condensed"
+            android:text="Scan"
+            android:textColor="@android:color/white"
+            android:textSize="50sp"
+            android:textStyle="bold" />
+
+
+        <TextView
+            android:id="@+id/scan_summary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="64dp"
+            android:fontFamily="sans-serif-condensed"
+            android:text="Anti-Virus, Optimize phone"
+            android:textColor="@android:color/white"
+            android:textSize="15sp" />
+
+    </com.vintech.shieldsecurity.main.view.MainWorkspace>
 
     <include layout="@layout/layer_main_content_dock" />
 </FrameLayout>

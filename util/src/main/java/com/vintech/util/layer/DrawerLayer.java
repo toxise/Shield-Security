@@ -2,13 +2,7 @@ package com.vintech.util.layer;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.RelativeLayout;
-
-import com.vintech.util.Device;
-import com.vintech.util.R;
-import com.vintech.util.display.DimensUtil;
 
 /**
  * Created by vincent on 2016/10/6.
@@ -36,30 +30,7 @@ public class DrawerLayer extends RelativeLayout {
         return false;
     }
 
-    @Override
-    protected boolean addViewInLayout(View child, int index, ViewGroup.LayoutParams params,
-                                      boolean preventRequestLayout) {
-        fixStatusBarBelow(params);
-        return super.addViewInLayout(child, index, params, preventRequestLayout);
-    }
-
-    @Override
-    protected void onFinishInflate() {
-        super.onFinishInflate();
-        for (int i = 0; i < getChildCount(); i++) {
-            View childAt = getChildAt(i);
-            fixStatusBarBelow(childAt.getLayoutParams());
-        }
-    }
-
-    private void fixStatusBarBelow(ViewGroup.LayoutParams params) {
-        if (!(params instanceof RelativeLayout.LayoutParams)) {
-            return;
-        }
-        LayoutParams lp = (LayoutParams) params;
-        int[] rules = lp.getRules();
-        if (Device.KITKAT && rules[BELOW] == R.id.below_fit_status) {
-            lp.topMargin = DimensUtil.getStatusBarHeight();
-        }
+    public boolean onBackKey() {
+        return false;
     }
 }

@@ -10,9 +10,16 @@ import com.vintech.util.UtilManager;
  */
 
 public class MainApplication extends Application {
+    private static MainApplication sInstance;
+
+    public static Context getContext() {
+        return sInstance;
+    }
+
     @Override
     public void onCreate() {
         super.onCreate();
+        sInstance = this;
     }
 
     @Override

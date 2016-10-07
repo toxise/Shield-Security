@@ -8,6 +8,9 @@ import android.util.DisplayMetrics;
  */
 
 public class DimensUtil {
+    public static final long SECOND = 1000;
+    public static final long MIN = 60 * SECOND;
+    public static final long HOUR = 60 * MIN;
     private static float sDpi;
     private static int sDisplayWidth;
     private static int sDisplayHeight;
