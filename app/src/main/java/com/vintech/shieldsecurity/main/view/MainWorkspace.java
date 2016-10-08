@@ -135,44 +135,45 @@ public class MainWorkspace extends FrameLayout {
     }
 
     private void startButtonTextAnimation(boolean toProcessing) {
+        final int duration = 300;
         // 一键扫描的文案动画
         int buttonTextFrom = toProcessing ? 1 : 0;
         int buttonTextTo = toProcessing ? 0 : 1;
         AnimationSet set = new AnimationSet(false);
         ScaleAnimation scaleAnimation = new ScaleAnimation(buttonTextFrom, buttonTextTo, buttonTextFrom, buttonTextTo, Animation.RELATIVE_TO_SELF, 0.5f, Animation.ABSOLUTE, mCenter.y - mButtonScan.getTop());
-        AlphaAnimation alphaAnimation = AnimationFactory.alphaAnimation(toProcessing, 500);
-        scaleAnimation.setDuration(500);
+        AlphaAnimation alphaAnimation = AnimationFactory.alphaAnimation(toProcessing, duration);
+        scaleAnimation.setDuration(duration);
         set.addAnimation(scaleAnimation);
         set.addAnimation(alphaAnimation);
-        set.setStartOffset(toProcessing ? 0 : 500);
+        set.setStartOffset(toProcessing ? 0 : duration);
         set.setFillBefore(true);
         mButtonScan.startAnimation(set);
         mButtonScan.setVisibility(toProcessing ? INVISIBLE : VISIBLE);
 
         set = new AnimationSet(false);
         scaleAnimation = new ScaleAnimation(buttonTextFrom, buttonTextTo, buttonTextFrom, buttonTextTo, Animation.RELATIVE_TO_SELF, 0.5f, Animation.ABSOLUTE, mCenter.y - mButtonSummary.getTop());
-        scaleAnimation.setDuration(500);
-        alphaAnimation = AnimationFactory.alphaAnimation(toProcessing, 500);
+        scaleAnimation.setDuration(duration);
+        alphaAnimation = AnimationFactory.alphaAnimation(toProcessing, duration);
         set.addAnimation(scaleAnimation);
         set.addAnimation(alphaAnimation);
-        set.setStartOffset(toProcessing ? 0 : 500);
+        set.setStartOffset(toProcessing ? 0 : duration);
         set.setFillBefore(true);
         mButtonSummary.startAnimation(set);
         mButtonSummary.setVisibility(toProcessing ? INVISIBLE : VISIBLE);
 
         // 进度文字的动画
         set = new AnimationSet(false);
-        scaleAnimation = AnimationFactory.scaleAnimation(!toProcessing, 500);
-        alphaAnimation = AnimationFactory.alphaAnimation(!toProcessing, 500);
+        scaleAnimation = AnimationFactory.scaleAnimation(!toProcessing, duration);
+        alphaAnimation = AnimationFactory.alphaAnimation(!toProcessing, duration);
         set.addAnimation(scaleAnimation);
         set.addAnimation(alphaAnimation);
-        set.setStartOffset(toProcessing ? 500 : 0);
+        set.setStartOffset(toProcessing ? duration : 0);
         set.setFillBefore(true);
         mTipsProcessing.setVisibility(toProcessing ? VISIBLE : INVISIBLE);
         mTipsProcessing.startAnimation(set);
 
-        alphaAnimation = AnimationFactory.alphaAnimation(!toProcessing, 500);
-        alphaAnimation.setStartOffset(toProcessing ? 500 : 0);
+        alphaAnimation = AnimationFactory.alphaAnimation(!toProcessing, duration);
+        alphaAnimation.setStartOffset(toProcessing ? duration : 0);
         alphaAnimation.setFillBefore(true);
         mTipsProcessingUnit.setVisibility(toProcessing ? VISIBLE : INVISIBLE);
         mTipsProcessingUnit.startAnimation(alphaAnimation);

@@ -11,7 +11,7 @@ import android.view.animation.TranslateAnimation;
  */
 
 public class AnimationFactory {
-    public static final float TSL_ALPHA_DURATION_RATE = 0.5f;
+    public static final float TSL_ALPHA_DURATION_RATE = 1f;
 
     public static AlphaAnimation alphaAnimation(boolean disapear, int duration) {
         int from = disapear ? 1 : 0;

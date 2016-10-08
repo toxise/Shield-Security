@@ -16,6 +16,7 @@ import com.vintech.util.display.GraphicUtil;
  */
 
 public class ButtonDrawer {
+    private static final int PROCESSING_DURATION = 700;
     // 圆环的颜色
     private final int[] mRingColor = new int[]{
             R.color.scan_ring_1, R.color.scan_ring_2, R.color.scan_ring_3, R.color.scan_ring_4, R.color.scan_ring_5
@@ -108,10 +109,10 @@ public class ButtonDrawer {
         }
 
         if (mProcessingTime > 0) {
-            float t = (float) (AnimationUtils.currentAnimationTimeMillis() - mProcessingTime) / 1000;
+            float t = (float) (AnimationUtils.currentAnimationTimeMillis() - mProcessingTime) / PROCESSING_DURATION;
             return Math.min(1, t);
         } else {
-            float t = 1 - (float) (AnimationUtils.currentAnimationTimeMillis() + mProcessingTime) / 1000;
+            float t = 1 - (float) (AnimationUtils.currentAnimationTimeMillis() + mProcessingTime) / PROCESSING_DURATION;
             return Math.max(0, t);
         }
     }
@@ -120,7 +121,7 @@ public class ButtonDrawer {
         float t = animateProcessing();
         mProcessingTime = -AnimationUtils.currentAnimationTimeMillis();
         if (t > 0) {
-            mProcessingTime += (1 - t) * 1000;
+            mProcessingTime += (1 - t) * PROCESSING_DURATION;
         }
     }
 

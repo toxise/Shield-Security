@@ -72,12 +72,12 @@ public class MainLayer extends DrawerLayer {
 
 
         int visibility = disapear ? INVISIBLE : VISIBLE;
-        int titleDistance = title.getHeight();
+        int titleDistance = title.getHeight() / 2;
         title.setVisibility(visibility);
-        title.startAnimation(AnimationFactory.tslAlphaAnimation(disapear, 0, -titleDistance, 500));
+        title.startAnimation(AnimationFactory.tslAlphaAnimation(disapear, 0, -titleDistance, 300));
         summary.setVisibility(visibility);
-        summary.startAnimation(AnimationFactory.tslAlphaAnimation(disapear, 0, -titleDistance, 500));
+        summary.startAnimation(AnimationFactory.tslAlphaAnimation(disapear, 0, -titleDistance, 300));
         dock.setVisibility(visibility);
-        dock.startAnimation(AnimationFactory.tslAlphaAnimation(disapear, 0f, 1f, 500));
+        dock.startAnimation(AnimationFactory.tslAlphaAnimation(disapear, 0f, 0.5f, 300));
     }
 }
