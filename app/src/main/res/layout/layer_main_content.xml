@@ -52,7 +52,30 @@
             android:textColor="@android:color/white"
             android:textSize="15sp" />
 
-    </com.vintech.shieldsecurity.main.view.MainWorkspace>
+        <TextView
+            android:id="@+id/scan_processing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:fontFamily="sans-serif-condensed"
+            android:text="0"
+            android:textColor="@android:color/white"
+            android:textSize="70sp"
+            android:textStyle="bold"
+            android:visibility="invisible" />
 
-    <include layout="@layout/layer_main_content_dock" />
+
+        <TextView
+            android:id="@+id/scan_processing_unit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:fontFamily="sans-serif-condensed"
+            android:text="%"
+            android:textColor="@android:color/white"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:visibility="invisible" />
+
+    </com.vintech.shieldsecurity.main.view.MainWorkspace>
 </FrameLayout>

@@ -117,7 +117,11 @@ public class ButtonDrawer {
     }
 
     public void stopProcessing() {
+        float t = animateProcessing();
         mProcessingTime = -AnimationUtils.currentAnimationTimeMillis();
+        if (t > 0) {
+            mProcessingTime += (1 - t) * 1000;
+        }
     }
 
     private float animateRotating() {

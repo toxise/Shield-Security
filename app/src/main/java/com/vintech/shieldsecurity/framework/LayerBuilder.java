@@ -1,10 +1,11 @@
-package com.vintech.shieldsecurity;
+package com.vintech.shieldsecurity.framework;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.vintech.shieldsecurity.R;
 import com.vintech.util.layer.DrawerLayer;
 import com.vintech.util.layer.ILayerBuilder;
 

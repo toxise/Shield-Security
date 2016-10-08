@@ -3,6 +3,7 @@ package com.vintech.shieldsecurity;
 import android.os.Bundle;
 import android.view.ViewGroup;
 
+import com.vintech.shieldsecurity.framework.LayerBuilder;
 import com.vintech.util.debug.Logger;
 import com.vintech.util.layer.LayerManager;
 
