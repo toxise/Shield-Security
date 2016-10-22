@@ -38,7 +38,11 @@ public class LayerBuilder implements ILayerBuilder {
         View layer = null;
         switch (layerId) {
             case R.id.layer_main:
-                layer = inflater.inflate(R.layout.layer_main, null);
+                layer = inflater.inflate(R.layout.layer_main, parent, false);
+                break;
+            case R.id.layer_onekey_result:
+                layer = inflater.inflate(R.layout.layer_onekey_result, parent, false);
+                break;
         }
 
         if (layer != null && layer instanceof DrawerLayer) {

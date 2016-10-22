@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.vintech.shieldsecurity.main.result.OneKeyScanResultLayer xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.design.widget.AppBarLayout
+            android:id="@+id/app_bar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.vintech.shieldsecurity.main.result.OneKeyResultHeader
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:background="#5500ccff"
+                android:orientation="vertical"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+
+                <ImageView
+                    android:layout_width="@dimen/actionBarSize"
+                    android:layout_height="@dimen/actionBarSize"
+                    android:padding="15dp"
+                    android:src="@drawable/ic_menu_back"
+                    app:layout_collapseMode="pin" />
+
+
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:height="@dimen/actionBarSize"
+                    android:gravity="center"
+                    android:text="In Dangers"
+                    android:textSize="18dp"
+                    app:layout_collapseMode="pin" />
+
+                <TextView
+                    android:id="@+id/title_sub"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="18dp"
+                    android:text="In Dangers"
+                    android:textSize="30dp" />
+            </com.vintech.shieldsecurity.main.result.OneKeyResultHeader>
+        </android.support.design.widget.AppBarLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+    </android.support.design.widget.CoordinatorLayout>
+</com.vintech.shieldsecurity.main.result.OneKeyScanResultLayer>

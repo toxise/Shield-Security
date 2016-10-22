@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
 
+import com.vintech.shieldsecurity.MainActivity;
 import com.vintech.shieldsecurity.R;
 import com.vintech.shieldsecurity.framework.BaseActionEvent;
 import com.vintech.util.display.AnimationFactory;
@@ -63,7 +64,7 @@ public class MainLayer extends DrawerLayer {
                     public void run() {
                         mMainWorkspace.finishProcessing();
                     }
-                }, DimensUtil.SECOND * 20);
+                }, DimensUtil.SECOND * 3);
                 break;
             case BaseActionEvent.ACTION_STOP_PROCESSING_ANIMATION:
                 mMainWorkspace.stopProcessing();
@@ -71,6 +72,7 @@ public class MainLayer extends DrawerLayer {
                 break;
             case BaseActionEvent.ACTION_FINISHED_PROCESSING_ANIMATION:
                 // TODO: 2016/10/22 jump to result of scan
+                MainActivity.getLayerManager().show(R.id.layer_onekey_result, null);
                 break;
             case BaseActionEvent.ACTION_FINISH_PROCESSING:
                 mMainWorkspace.finishProcessing();
@@ -80,7 +82,7 @@ public class MainLayer extends DrawerLayer {
 
     private void startProcessAnimation(boolean dispear) {
         View title = findViewById(R.id.title);
-        View summary = findViewById(R.id.titile_sub);
+        View summary = findViewById(R.id.title_sub);
         View dock = findViewById(R.id.dock);
 
 

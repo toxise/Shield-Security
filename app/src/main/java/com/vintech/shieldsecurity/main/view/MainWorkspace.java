@@ -85,7 +85,7 @@ public class MainWorkspace extends FrameLayout {
 
 
         if (mStatus == Status.FINISHING) {
-            mScanProcessing += baseRate * 1.5f;
+            mScanProcessing += baseRate * 3.5f;
             if (mScanProcessing >= 1) {
                 mScanProcessing = 1;
                 mStatus = Status.FINISHED;
