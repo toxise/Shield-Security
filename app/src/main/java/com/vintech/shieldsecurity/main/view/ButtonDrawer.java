@@ -100,8 +100,8 @@ public class ButtonDrawer {
             float angleSweep = mRingAngle[i] + (360 - mRingAngle[i]) * tProcessing; // 圆环弧距
 
             mPaint.setColor(GraphicUtil.getColor(MainApplication.getContext(), mRingColor[i])); // 画笔颜色
-            float radiu = mRadius - i * mRingSpace; // 半径设定
-            mArcRect.set(mCenter.x - radiu, mCenter.y - radiu, mCenter.x + radiu, mCenter.y + radiu); // 圆环的区域设定
+            float radius = mRadius - i * mRingSpace; // 半径设定
+            mArcRect.set(mCenter.x - radius, mCenter.y - radius, mCenter.x + radius, mCenter.y + radius); // 圆环的区域设定
 
             canvas.drawArc(mArcRect, anglePos, angleSweep, false, mPaint); // 绘制
         }
