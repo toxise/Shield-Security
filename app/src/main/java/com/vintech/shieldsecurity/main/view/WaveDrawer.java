@@ -23,8 +23,8 @@ public class WaveDrawer {
     private float mWaveProcess = 0.0f;
 
     private float[] mWaveHeight = new float[]{
-            DimensUtil.dp2Pixel(25),
-            DimensUtil.dp2Pixel(10)
+            DimensUtil.dp2Pixel(15),
+            DimensUtil.dp2Pixel(8)
     };
 
     private float[] mWaveWidth = new float[]{
@@ -84,7 +84,8 @@ public class WaveDrawer {
 
         float w = moveX;
         while (w < mCenter.x + mRadius) {
-            mPath.rCubicTo(width / 2, height, width * 1.5f, -height, width * 2, 0);
+            mPath.rQuadTo(width / 2, height, width * 1f, 0);
+            mPath.rQuadTo(width / 2, -height, width * 1f, 0);
             w += width * 2;
         }
         mPath.rLineTo(0, moveY);
