@@ -26,7 +26,7 @@ public abstract class ClickHandler {
                 return judgeArea(x, y);
             case MotionEvent.ACTION_UP:
                 if (System.currentTimeMillis() - mTouchDownTime < 600 && judgeArea(x, y) && GraphicUtil.inCircle(mDownX, mDownY, TOUCH_SLOP, x, y)) {
-                    notifiClick();
+                    notifyClick();
                 }
             case MotionEvent.ACTION_CANCEL:
                 mTouchDownTime = 0;
@@ -35,7 +35,7 @@ public abstract class ClickHandler {
         return false;
     }
 
-    public abstract void notifiClick();
+    public abstract void notifyClick();
 
     public abstract boolean judgeArea(float x, float y);
 }

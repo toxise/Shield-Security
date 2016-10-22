@@ -10,4 +10,8 @@
     <color name="scan_ring_4">#06ae00</color>
     <color name="scan_ring_5">#b9b600</color>
     <color name="scan_bg">#6b131313</color>
+
+    <!-- 水波的颜色 -->
+    <color name="wave_color_1">#0066ff</color>
+    <color name="wave_color_2">#a90066ff</color>
 </resources>

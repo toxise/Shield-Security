@@ -38,12 +38,15 @@ public class MainWorkspace extends FrameLayout {
     private int mRadius;
     private Point mCenter = new Point();
     private ButtonDrawer mButtonDrawer;
+    private WaveDrawer mWaveDrawer;
     private Status mStatus = Status.NORMAL;
+    private float mScanProcessing = 0;
+
     private ClickHandler mClickHandler = new ClickHandler() {
         @Override
-        public void notifiClick() {
-            mStatus = Status.SCANING;
-            EventBus.getDefault().post(new BaseActionEvent(BaseActionEvent.ACTION_START_PROCESSING));
+        public void notifyClick() {
+            mStatus = Status.SCANNING;
+            EventBus.getDefault().post(new BaseActionEvent(BaseActionEvent.ACTION_START_PROCESSING_ANIMATION));
         }
 
         @Override
@@ -58,13 +61,48 @@ public class MainWorkspace extends FrameLayout {
     public MainWorkspace(Context context, AttributeSet attrs) {
         super(context, attrs);
         mButtonDrawer = new ButtonDrawer();
+        mWaveDrawer = new WaveDrawer();
     }
 
     @Override
     protected void dispatchDraw(Canvas canvas) {
+        handleProcessing();
         mButtonDrawer.drawButton(canvas);
+        if (mStatus != Status.NORMAL) {
+            mWaveDrawer.drawWave(canvas);
+        }
         super.dispatchDraw(canvas);
         invalidate();
+    }
+
+    private void handleProcessing() {
+        if (mStatus == mStatus.NORMAL || mStatus == Status.FINISHED) {
+            return;
+        }
+
+        float baseRate = 0.001f;
+        float left = 1 - mScanProcessing;
+
+
+        if (mStatus == Status.FINISHING) {
+            mScanProcessing += baseRate;
+            if (mScanProcessing >= 1) {
+                mScanProcessing = 1;
+                mStatus = Status.FINISHED;
+                postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        BaseActionEvent.send(BaseActionEvent.ACTION_FINISHED_PROCESSING_ANIMATION);
+                    }
+                }, 100);
+            }
+        } else if (mScanProcessing < 1) {
+            mScanProcessing += baseRate * left;
+        }
+
+        mScanProcessing = Math.min(1, mScanProcessing);
+        mWaveDrawer.setProcess(mScanProcessing);
+        mTipsProcessing.setText(String.valueOf((int) (mScanProcessing * 100)));
     }
 
     @Override
@@ -92,6 +130,7 @@ public class MainWorkspace extends FrameLayout {
         mCenter.set(getWidth() / 2, top + mRadius + (h - top - bottom - contentHeight) / 2);
 
         mButtonDrawer.initSize(mCenter, mRadius);
+        mWaveDrawer.initSize(mCenter, mButtonDrawer.getInnerRadius());
     }
 
     @Override
@@ -129,7 +168,12 @@ public class MainWorkspace extends FrameLayout {
         startButtonTextAnimation(false);
     }
 
+    public void finishProcessing() {
+        mStatus = Status.FINISHING;
+    }
+
     public void startProcessing() {
+        mScanProcessing = 0;
         mButtonDrawer.startProcessAnimation();
         startButtonTextAnimation(true);
     }
@@ -180,6 +224,6 @@ public class MainWorkspace extends FrameLayout {
     }
 
     public enum Status {
-        NORMAL, SCANING
+        NORMAL, SCANNING, FINISHING, FINISHED
     }
 }

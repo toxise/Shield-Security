@@ -76,11 +76,15 @@ public class ButtonDrawer {
         mProcessingTime = AnimationUtils.currentAnimationTimeMillis();
     }
 
+    public float getInnerRadius() {
+        return mRadius - mRingPosition.length * mRingSpace;
+    }
+
     private void drawCircle(Canvas canvas) {
-        float circleRadiu = mRadius - mRingPosition.length * mRingSpace;
+        float circleRadius = mRadius - mRingPosition.length * mRingSpace;
         mPaint.setColor(mScanBg);
         mPaint.setStyle(Paint.Style.FILL);
-        canvas.drawCircle(mCenter.x, mCenter.y, circleRadiu, mPaint);
+        canvas.drawCircle(mCenter.x, mCenter.y, circleRadius, mPaint);
     }
 
     private void drawRings(Canvas canvas) {

@@ -7,6 +7,7 @@ import android.view.View;
 import com.vintech.shieldsecurity.R;
 import com.vintech.shieldsecurity.framework.BaseActionEvent;
 import com.vintech.util.display.AnimationFactory;
+import com.vintech.util.display.DimensUtil;
 import com.vintech.util.layer.DrawerLayer;
 
 import org.greenrobot.eventbus.EventBus;
@@ -32,7 +33,7 @@ public class MainLayer extends DrawerLayer {
     @Override
     public boolean onBackKey() {
         if (mMainWorkspace.getStatus() != MainWorkspace.Status.NORMAL) {
-            EventBus.getDefault().post(new BaseActionEvent(BaseActionEvent.ACTION_STOP_PROCESSING));
+            EventBus.getDefault().post(new BaseActionEvent(BaseActionEvent.ACTION_STOP_PROCESSING_ANIMATION));
             return true;
         }
         return super.onBackKey();
@@ -54,30 +55,42 @@ public class MainLayer extends DrawerLayer {
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEventAction(BaseActionEvent event) {
         switch (event.getAction()) {
-            case BaseActionEvent.ACTION_START_PROCESSING:
+            case BaseActionEvent.ACTION_START_PROCESSING_ANIMATION:
                 mMainWorkspace.startProcessing();
                 startProcessAnimation(true);
+                postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        mMainWorkspace.finishProcessing();
+                    }
+                }, DimensUtil.SECOND * 20);
                 break;
-            case BaseActionEvent.ACTION_STOP_PROCESSING:
+            case BaseActionEvent.ACTION_STOP_PROCESSING_ANIMATION:
                 mMainWorkspace.stopProcessing();
                 startProcessAnimation(false);
+                break;
+            case BaseActionEvent.ACTION_FINISHED_PROCESSING_ANIMATION:
+                // TODO: 2016/10/22 jump to result of scan
+                break;
+            case BaseActionEvent.ACTION_FINISH_PROCESSING:
+                mMainWorkspace.finishProcessing();
                 break;
         }
     }
 
-    private void startProcessAnimation(boolean disapear) {
+    private void startProcessAnimation(boolean dispear) {
         View title = findViewById(R.id.title);
         View summary = findViewById(R.id.titile_sub);
         View dock = findViewById(R.id.dock);
 
 
-        int visibility = disapear ? INVISIBLE : VISIBLE;
+        int visibility = dispear ? INVISIBLE : VISIBLE;
         int titleDistance = title.getHeight() / 2;
         title.setVisibility(visibility);
-        title.startAnimation(AnimationFactory.tslAlphaAnimation(disapear, 0, -titleDistance, 300));
+        title.startAnimation(AnimationFactory.tslAlphaAnimation(dispear, 0, -titleDistance, 300));
         summary.setVisibility(visibility);
-        summary.startAnimation(AnimationFactory.tslAlphaAnimation(disapear, 0, -titleDistance, 300));
+        summary.startAnimation(AnimationFactory.tslAlphaAnimation(dispear, 0, -titleDistance, 300));
         dock.setVisibility(visibility);
-        dock.startAnimation(AnimationFactory.tslAlphaAnimation(disapear, 0f, 0.5f, 300));
+        dock.startAnimation(AnimationFactory.tslAlphaAnimation(dispear, 0f, 0.5f, 300));
     }
 }
