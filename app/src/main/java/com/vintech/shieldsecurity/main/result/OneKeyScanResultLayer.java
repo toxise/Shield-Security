@@ -9,7 +9,6 @@ import android.widget.TextView;
 
 import com.vintech.shieldsecurity.MainActivity;
 import com.vintech.shieldsecurity.R;
-import com.vintech.util.debug.Logger;
 import com.vintech.util.layer.DrawerLayer;
 
 /**
@@ -22,6 +21,7 @@ public class OneKeyScanResultLayer extends DrawerLayer implements OneKeyResultHe
     private OneKeyResultHeader mOneKeyResultHeader;
     private TextView mTitleText;
     private TextView mTitleSubText;
+
     public OneKeyScanResultLayer(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
@@ -54,8 +54,19 @@ public class OneKeyScanResultLayer extends DrawerLayer implements OneKeyResultHe
 
     @Override
     public void onOffsetChanged(float t) {
-        mTitleText.setAlpha(t);
-        mTitleSubText.setAlpha(1 - t);
-        Logger.pgw("onOffsetChanged t= " + t);
+        float alpha = 0;
+        float line = 0.7f;
+        if (t > line) {
+            alpha = ((t - line) / (1f - line));
+        }
+        mTitleText.setAlpha(alpha);
+
+        line = 0.6f;
+        if (t < line) {
+            alpha = 1 - t / line;
+        } else {
+            alpha = 0;
+        }
+        mTitleSubText.setAlpha(alpha);
     }
 }
