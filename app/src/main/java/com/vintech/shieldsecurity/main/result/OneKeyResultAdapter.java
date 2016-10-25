@@ -26,7 +26,7 @@ public class OneKeyResultAdapter extends RecyclerView.Adapter<OneKeyResultAdapte
 
     @Override
     public AdapterViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layer_onekey_result_item, null);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layer_onekey_result_item, parent, false);
         AdapterViewHolder holder = new AdapterViewHolder(view);
         return holder;
     }

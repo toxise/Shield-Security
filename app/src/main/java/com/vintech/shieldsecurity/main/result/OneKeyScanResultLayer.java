@@ -17,7 +17,7 @@ import com.vintech.util.layer.DrawerLayer;
  */
 
 public class OneKeyScanResultLayer extends DrawerLayer implements CollapsingHeader.OnOffsetChangedListener {
-    private RecyclerView mListView;
+    private RecyclerView mRecyclerView;
     private AppBarLayout mAppBarLayout;
     private CollapsingHeader mOneKeyResultHeader;
     private TextView mTitleText;
@@ -30,7 +30,7 @@ public class OneKeyScanResultLayer extends DrawerLayer implements CollapsingHead
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-        mListView = (RecyclerView) findViewById(R.id.list);
+        mRecyclerView = (RecyclerView) findViewById(R.id.list);
         mAppBarLayout = (AppBarLayout) findViewById(R.id.app_bar_layout);
         mOneKeyResultHeader = (CollapsingHeader) findViewById(R.id.toolbar);
         mTitleText = (TextView) mOneKeyResultHeader.findViewById(R.id.title);
@@ -42,8 +42,11 @@ public class OneKeyScanResultLayer extends DrawerLayer implements CollapsingHead
     }
 
     private void initData() {
-        mListView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
-        mListView.setAdapter(new OneKeyResultAdapter());
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        mRecyclerView.setLayoutManager(linearLayoutManager);
+        mRecyclerView.addItemDecoration(new OneKeyResultItemDecoration());
+        mRecyclerView.setAdapter(new OneKeyResultAdapter());
     }
 
     @Override
