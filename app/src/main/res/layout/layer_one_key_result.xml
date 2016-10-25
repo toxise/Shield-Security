@@ -2,7 +2,8 @@
 <com.vintech.shieldsecurity.main.result.OneKeyScanResultLayer xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#d1d1d1">
 
     <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
@@ -14,7 +15,7 @@
             android:layout_height="200dp"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-            <com.vintech.shieldsecurity.main.result.OneKeyResultHeader
+            <com.vintech.shieldsecurity.framework.view.CollapsingHeader
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
@@ -54,14 +55,13 @@
                     android:layout_marginTop="18dp"
                     android:text="In Dangers"
                     android:textSize="30dp" />
-            </com.vintech.shieldsecurity.main.result.OneKeyResultHeader>
+            </com.vintech.shieldsecurity.framework.view.CollapsingHeader>
         </android.support.design.widget.AppBarLayout>
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@android:color/white"
             app:layout_behavior="@string/appbar_scrolling_view_behavior" />
     </android.support.design.widget.CoordinatorLayout>
 </com.vintech.shieldsecurity.main.result.OneKeyScanResultLayer>

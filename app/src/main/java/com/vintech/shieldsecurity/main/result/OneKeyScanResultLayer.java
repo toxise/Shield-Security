@@ -9,16 +9,17 @@ import android.widget.TextView;
 
 import com.vintech.shieldsecurity.MainActivity;
 import com.vintech.shieldsecurity.R;
+import com.vintech.shieldsecurity.framework.view.CollapsingHeader;
 import com.vintech.util.layer.DrawerLayer;
 
 /**
  * Created by vincent on 2016/10/22.
  */
 
-public class OneKeyScanResultLayer extends DrawerLayer implements OneKeyResultHeader.OnOffsetChangedListener {
+public class OneKeyScanResultLayer extends DrawerLayer implements CollapsingHeader.OnOffsetChangedListener {
     private RecyclerView mListView;
     private AppBarLayout mAppBarLayout;
-    private OneKeyResultHeader mOneKeyResultHeader;
+    private CollapsingHeader mOneKeyResultHeader;
     private TextView mTitleText;
     private TextView mTitleSubText;
 
@@ -31,7 +32,7 @@ public class OneKeyScanResultLayer extends DrawerLayer implements OneKeyResultHe
         super.onFinishInflate();
         mListView = (RecyclerView) findViewById(R.id.list);
         mAppBarLayout = (AppBarLayout) findViewById(R.id.app_bar_layout);
-        mOneKeyResultHeader = (OneKeyResultHeader) findViewById(R.id.toolbar);
+        mOneKeyResultHeader = (CollapsingHeader) findViewById(R.id.toolbar);
         mTitleText = (TextView) mOneKeyResultHeader.findViewById(R.id.title);
         mTitleSubText = (TextView) mOneKeyResultHeader.findViewById(R.id.title_sub);
         mTitleText.setAlpha(0);

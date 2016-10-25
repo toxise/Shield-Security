@@ -1,4 +1,4 @@
-package com.vintech.shieldsecurity.main.result;
+package com.vintech.shieldsecurity.framework.view;
 
 import android.content.Context;
 import android.support.design.widget.AppBarLayout;
@@ -14,11 +14,11 @@ import com.vintech.util.display.DimensUtil;
  * Created by vincent on 2016/10/22.
  */
 
-public class OneKeyResultHeader extends FrameLayout implements AppBarLayout.OnOffsetChangedListener {
+public class CollapsingHeader extends FrameLayout implements AppBarLayout.OnOffsetChangedListener {
     private int mRecordMinHeight;
     private OnOffsetChangedListener mOnOffsetChangedListener;
 
-    public OneKeyResultHeader(Context context, AttributeSet attrs) {
+    public CollapsingHeader(Context context, AttributeSet attrs) {
         super(context, attrs);
         mRecordMinHeight = DimensUtil.getPixel(context, R.dimen.actionBarSize);
         if (Device.KITKAT) {
