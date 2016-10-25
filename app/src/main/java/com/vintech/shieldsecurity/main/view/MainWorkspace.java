@@ -14,7 +14,6 @@ import android.widget.TextView;
 
 import com.vintech.shieldsecurity.R;
 import com.vintech.shieldsecurity.framework.BaseActionEvent;
-import com.vintech.util.Device;
 import com.vintech.util.display.AnimationFactory;
 import com.vintech.util.display.DimensUtil;
 import com.vintech.util.display.GraphicUtil;
@@ -72,7 +71,9 @@ public class MainWorkspace extends FrameLayout {
             mWaveDrawer.drawWave(canvas);
         }
         super.dispatchDraw(canvas);
-        invalidate();
+        if (mStatus != Status.FINISHED) {
+            invalidate();
+        }
     }
 
     private void handleProcessing() {
@@ -119,9 +120,6 @@ public class MainWorkspace extends FrameLayout {
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         int top = 0;
         int bottom = DimensUtil.dp2Pixel(100); // 底部留白空间
-        if (Device.KITKAT) {
-            top += DimensUtil.getStatusBarHeight(); // 状态栏的高度
-        }
         top += DimensUtil.dp2Pixel(60); // 标题栏的高度
         int tipsHeight = DimensUtil.dp2Pixel(60); // 提示文案高度
         int side = DimensUtil.dp2Pixel(60); // 左右留白
@@ -169,7 +167,9 @@ public class MainWorkspace extends FrameLayout {
     }
 
     public void finishProcessing() {
-        mStatus = Status.FINISHING;
+        if (mStatus == Status.SCANNING) {
+            mStatus = Status.FINISHING;
+        }
     }
 
     public void startProcessing() {

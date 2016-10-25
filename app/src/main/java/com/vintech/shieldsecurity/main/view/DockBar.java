@@ -8,6 +8,8 @@ import android.util.AttributeSet;
 import android.widget.LinearLayout;
 
 import com.vintech.shieldsecurity.R;
+import com.vintech.util.Device;
+import com.vintech.util.display.DimensUtil;
 import com.vintech.util.display.GraphicUtil;
 
 /**
@@ -22,6 +24,9 @@ public class DockBar extends LinearLayout {
         super(context, attrs);
         mPaint.setColor(GraphicUtil.getColor(context, R.color.dock_bar_bg));
         mPaint.setStyle(Paint.Style.FILL);
+        if (Device.KITKAT) {
+            setPadding(getPaddingLeft(), getPaddingTop(), getPaddingRight(), getPaddingBottom() + DimensUtil.getNavBarHeight());
+        }
     }
 
     @Override

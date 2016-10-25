@@ -24,6 +24,7 @@ public class MainLayer extends DrawerLayer {
 
     public MainLayer(Context context, AttributeSet attrs) {
         super(context, attrs);
+        initNavPadding();
     }
 
     @Override
@@ -71,8 +72,7 @@ public class MainLayer extends DrawerLayer {
                 startProcessAnimation(false);
                 break;
             case BaseActionEvent.ACTION_FINISHED_PROCESSING_ANIMATION:
-                // TODO: 2016/10/22 jump to result of scan
-                MainActivity.getLayerManager().show(R.id.layer_onekey_result, null);
+                MainActivity.getLayerManager().show(R.id.layer_one_key_result, null);
                 break;
             case BaseActionEvent.ACTION_FINISH_PROCESSING:
                 mMainWorkspace.finishProcessing();
@@ -81,7 +81,7 @@ public class MainLayer extends DrawerLayer {
     }
 
     private void startProcessAnimation(boolean dispear) {
-        View title = findViewById(R.id.title);
+        View title = findViewById(R.id.toolbar);
         View summary = findViewById(R.id.title_sub);
         View dock = findViewById(R.id.dock);
 

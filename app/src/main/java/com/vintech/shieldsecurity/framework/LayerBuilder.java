@@ -38,10 +38,10 @@ public class LayerBuilder implements ILayerBuilder {
         View layer = null;
         switch (layerId) {
             case R.id.layer_main:
-                layer = inflater.inflate(R.layout.layer_main, parent, false);
+                layer = inflater.inflate(R.layout.layer_main, null);
                 break;
-            case R.id.layer_onekey_result:
-                layer = inflater.inflate(R.layout.layer_onekey_result, parent, false);
+            case R.id.layer_one_key_result:
+                layer = inflater.inflate(R.layout.layer_one_key_result, null);
                 break;
         }
 

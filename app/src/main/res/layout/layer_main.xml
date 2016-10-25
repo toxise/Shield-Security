@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.vintech.shieldsecurity.main.view.MainLayer xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/color_normal">
 
     <android.support.v4.widget.DrawerLayout
         android:layout_width="match_parent"
@@ -13,22 +13,16 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <com.vintech.shieldsecurity.main.view.ColorFadeView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:color="@color/color_normal" />
-
             <include layout="@layout/layer_main_content" />
 
             <include layout="@layout/layer_main_content_dock" />
 
             <!-- 左上角标题的容器 -->
             <LinearLayout
-                android:id="@+id/title"
+                android:id="@+id/toolbar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:fitsSystemWindows="true"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -54,7 +48,7 @@
                 android:id="@+id/title_sub"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/title"
+                android:layout_below="@+id/toolbar"
                 android:layout_marginLeft="48dp"
                 android:fontFamily="sans-serif-condensed"
                 android:text="@string/main_title_sub"
@@ -63,7 +57,7 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:id="@+id/navgation"
+            android:id="@+id/navigation"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="start"

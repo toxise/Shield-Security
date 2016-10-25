@@ -42,13 +42,12 @@ public class OneKeyScanResultLayer extends DrawerLayer implements OneKeyResultHe
 
     private void initData() {
         mListView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
-
         mListView.setAdapter(new OneKeyResultAdapter());
     }
 
     @Override
     public boolean onBackKey() {
-        MainActivity.getLayerManager().hide(R.id.layer_onekey_result, null);
+        MainActivity.getLayerManager().hide(R.id.layer_one_key_result, null);
         return true;
     }
 
