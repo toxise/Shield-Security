@@ -24,6 +24,7 @@ public class MainActivity extends BaseActivity {
         mMainView = (ViewGroup) findViewById(R.id.root_view);
         sLayerManager = new LayerManager(LayerBuilder.getInstance(), mMainView);
         sLayerManager.show(R.id.layer_main, null);
+        sLayerManager.show(R.id.layer_one_key_result, null);
     }
 
     @Override

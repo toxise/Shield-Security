@@ -2,8 +2,9 @@ package com.vintech.shieldsecurity.main.result;
 
 import android.content.Context;
 import android.support.design.widget.AppBarLayout;
-import android.support.design.widget.CollapsingToolbarLayout;
 import android.util.AttributeSet;
+import android.view.View;
+import android.widget.FrameLayout;
 
 import com.vintech.shieldsecurity.R;
 import com.vintech.util.Device;
@@ -13,7 +14,7 @@ import com.vintech.util.display.DimensUtil;
  * Created by vincent on 2016/10/22.
  */
 
-public class OneKeyResultHeader extends CollapsingToolbarLayout implements AppBarLayout.OnOffsetChangedListener {
+public class OneKeyResultHeader extends FrameLayout implements AppBarLayout.OnOffsetChangedListener {
     private int mRecordMinHeight;
     private OnOffsetChangedListener mOnOffsetChangedListener;
 
@@ -21,8 +22,8 @@ public class OneKeyResultHeader extends CollapsingToolbarLayout implements AppBa
         super(context, attrs);
         mRecordMinHeight = DimensUtil.getPixel(context, R.dimen.actionBarSize);
         if (Device.KITKAT) {
-            setPadding(0, DimensUtil.getStatusBarHeight(), 0, 0);
             mRecordMinHeight += DimensUtil.getStatusBarHeight();
+            setPadding(0, DimensUtil.getStatusBarHeight(), 0, 0);
         }
         setMinimumHeight(mRecordMinHeight);
     }
@@ -34,12 +35,17 @@ public class OneKeyResultHeader extends CollapsingToolbarLayout implements AppBa
         if (mOnOffsetChangedListener != null) {
             mOnOffsetChangedListener.onOffsetChanged(t);
         }
+        View pinMode = findViewById(R.id.pin_mode);
+        if (pinMode != null) {
+            int height = pinMode.getHeight();
+            pinMode.setTop(-verticalOffset + getPaddingTop());
+            pinMode.setBottom(pinMode.getTop() + height);
+        }
     }
 
     public void setOnOffsetChangedListener(OnOffsetChangedListener listener) {
         mOnOffsetChangedListener = listener;
     }
-
 
     public interface OnOffsetChangedListener {
         void onOffsetChanged(float t);

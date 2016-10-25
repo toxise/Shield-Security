@@ -11,35 +11,40 @@
         <android.support.design.widget.AppBarLayout
             android:id="@+id/app_bar_layout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="200dp"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
             <com.vintech.shieldsecurity.main.result.OneKeyResultHeader
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:background="#5500ccff"
-                android:orientation="vertical"
+                android:background="#ff00ccff"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
+                <LinearLayout
+                    android:id="@+id/pin_mode"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-                <ImageView
-                    android:layout_width="@dimen/actionBarSize"
-                    android:layout_height="@dimen/actionBarSize"
-                    android:padding="15dp"
-                    android:src="@drawable/ic_menu_back"
-                    app:layout_collapseMode="pin" />
+                    <ImageView
+                        android:layout_width="@dimen/actionBarSize"
+                        android:layout_height="@dimen/actionBarSize"
+                        android:padding="15dp"
+                        android:src="@drawable/ic_menu_back"
+                        app:layout_collapseMode="pin" />
 
 
-                <TextView
-                    android:id="@+id/title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:height="@dimen/actionBarSize"
-                    android:gravity="center"
-                    android:text="In Dangers"
-                    android:textSize="18dp"
-                    app:layout_collapseMode="pin" />
+                    <TextView
+                        android:id="@+id/title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:height="@dimen/actionBarSize"
+                        android:gravity="center"
+                        android:text="In Dangers"
+                        android:textSize="18dp" />
+
+                </LinearLayout>
 
                 <TextView
                     android:id="@+id/title_sub"

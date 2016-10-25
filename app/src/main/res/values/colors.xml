@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- 几个状态的俄颜色-->
     <color name="color_normal">#17204d</color>
+    <!-- dock栏的背景色 -->
     <color name="dock_bar_bg">#69000000</color>
 
     <!-- 扫描中心的圆圈的环的颜色列表 -->
